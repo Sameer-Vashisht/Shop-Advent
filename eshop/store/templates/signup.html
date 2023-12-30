@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{%block content%}
+ 
+<div class = "container-fluid">
+    <div class = "p-4 m-4">
+        <div class = "col-lg-5 mx-auto border border-dark rounded pt-3">
+            <h4 class = "alert alert-light border rounded me-3 ms-3">Create An Account</h4>
+            <form action = "/signup" class = "m-3" method = "POST">
+                {% csrf_token %}
+
+                {%if error%}
+                <div class = "alert alert-danger" role = "alert">
+                    {{error}}
+                </div>
+                {%endif%}
+                <div class="mb-3">
+                    <label for="firstname" class="form-label">Firstname</label>
+                    <input type="text" name = "firstname" class="form-control form-control-sm" id="" 
+                    value = "{{values.firstname}}" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text" ></div>
+                </div>
+                  
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Lastname</label>
+                    <input type="text" name = "lastname" class="form-control form-control-sm" id="" 
+                    value = "{{values.lastname}}" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text" ></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone_no" class="form-label">Phone No.</label>
+                    <input type="text" name = "phone_no" class="form-control form-control-sm" 
+                    value = "{{values.phone_no}}" placeholder = "123456789"id="" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text" ></div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" name = "email" class="form-control form-control-sm" 
+                  value = "{{values.email}}" placeholder = "example@gmail.com" id="" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text" ></div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" name = "password" class="form-control form-control-sm" id="" placeholder = "*******">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+
+{% endblock%}
